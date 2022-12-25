@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("#{resource['images/background.jpg']}");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    padding: 16px;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.card {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.4) url("#{resource['images/noise.png']}") repeat top left;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 100;
+}
+
+#map-container {
+    position: relative;
+    overflow: clip;
+    border: 2px dashed rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 300ms ease;
+    cursor: none;
+}
+
+#map-container:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.point, #cursor {
+    position: absolute;
+    transform: translate(-4px, -4px);
+    width: 8px;
+    height: 8px;
+    background: none;
+    border-radius: 50%;
+    border: 2px solid #29aaae;
+}
+
+#point, #cursor {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+#cursor {
+    width: 16px;
+    height: 16px;
+    transform: translate(-8px, -8px);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+}
+
+#map-container img {
+    width: 320px;
+    opacity: 0.7;
+    user-select: none;
+    pointer-events: none;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 32px;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+form h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 8px;
+}
+
+.radio-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.row .dream-button, .radio-buttons .dream-button {
+    flex: 1 0 auto;
+}
+
+.row.center {
+    align-items: center;
+}
+
+.backLink {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1.0);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.mainLink {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px;
+    color: #000;
+}
+
+.dream-button, .dream-button:disabled:hover {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.5), 0 5px 16px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    transform: none;
+    transition: all 300ms ease;
+}
+
+.dream-button:disabled, .dream-button:disabled:hover {
+    cursor: initial;
+}
+
+.dream-button:focus {
+    box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.5), 0 5px 16px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.dream-button:hover, .dream-button:active, .dream-button.selected {
+    box-shadow: inset 0 0 16px rgba(255, 144, 220, 0.5), 0 5px 16px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(110%);
+}
+
+.submit-button:hover {
+    color: rgba(0, 0, 0, 0.7);
+    transform: scale(105%);
+    text-shadow: none;
+}
+
+.submit-button, .submit-button:disabled:hover {
+    font-size: 22px;
+    padding: 16px 24px;
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow:
+            -16px 0 rgba(255, 0, 0, 0.2),
+            -12px 0 rgba(255, 0, 0, 0.2),
+            -8px 0 rgba(255, 0, 0, 0.2),
+            -4px 0 rgba(255, 0, 0, 0.2),
+            4px 0 rgba(0, 0, 255, 0.2),
+            8px 0 rgba(0, 0, 255, 0.2),
+            12px 0 rgba(0, 0, 255, 0.2),
+            16px 0 rgba(0, 0, 255, 0.2);
+}
+
+input[type="text"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.5), 0 5px 16px rgba(0, 0, 0, 0.05);
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+    transition: all 300ms ease;
+}
+
+input[type="text"]:hover, input[type="text"]:focus {
+    box-shadow: inset 0 0 16px rgba(255, 144, 220, 0.5), 0 5px 16px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    height: 188px;
+    background-image: url("#{resource['images/text.svg']}");
+    background-size: cover;
+    background-position: center center;
+}
+
+table.card {
+    width: 100%;
+    padding: 0;
+    border-collapse: collapse;
+    border: hidden;
+    overflow: clip;
+}
+
+table.card td, table.card th {
+    text-align: left;
+    padding: 10px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+table.card thead tr {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.error {
+    display: block;
+    align-self: center;
+    margin-bottom: 8px;
+    color: #eb2b5d;
+}
+
+#clock {
+    font-family: "Inconsolata", monospace;
+    font-weight: 900;
+    font-size: 70px;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0 16px 32px rgba(0, 0, 0, 0.64);
+    text-align: center;
+}
+
+p {
+    margin-top: 16px;
+    font-family: "Inconsolata", monospace;
+    font-weight: 400;
+    text-align: justify;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 850px) {
+    .mob-col {
+        flex-flow: column-reverse nowrap;
+        align-items: center;
+    }
+
+    .mob-col  form {
+        width: 100%;
+    }
+}

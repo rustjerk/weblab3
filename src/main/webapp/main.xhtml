@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head>
+    <title>Lab 3 — Lost In Space</title>
+    <h:outputStylesheet library="styles" name="main.css"/>
+    <h:outputScript library="scripts" name="main.js"/>
+    <link rel="shortcut icon" href="#{resource['images/favicon.png']}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
+</h:head>
+<h:body>
+    <div class="container">
+        <div class="header">
+            <div class="row center">
+                <h1>V1000 / P32101 / 336180 / А.В. Никашкин</h1>
+                <h:link outcome="toIndex" value="Назад" styleClass="backLink"/>
+            </div>
+        </div>
+
+        <div class="card row mob-col">
+            <h:form id="form" style="flex: 1 0 auto">
+                <div>
+                    <h2>Радиус</h2>
+                    <div class="radio-buttons">
+                        <h:inputHidden id="radius" value="#{entry.radius}"/>
+
+                        <h:commandButton styleClass="dream-button" value="1" action="#{entry.setRadius(1)}">
+                            <f:ajax render="radius" onevent="updateForm"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="dream-button" value="1.5"
+                                         action="#{entry.setRadius(1.5)}">
+                            <f:ajax render="radius" onevent="updateForm"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="dream-button" value="2" action="#{entry.setRadius(2)}">
+                            <f:ajax render="radius" onevent="updateForm"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="dream-button" value="2.5" action="#{entry.setRadius(2.5)}">
+                            <f:ajax render="radius" onevent="updateForm"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="dream-button" value="3" action="#{entry.setRadius(3)}">
+                            <f:ajax render="radius" onevent="updateForm"/>
+                        </h:commandButton>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Координата X</h2>
+                    <div class="radio-buttons">
+                        <h:inputHidden id="coordX" value="#{entry.x}"/>
+
+                        <h:commandLink styleClass="dream-button" value="-4" action="#{entry.setX(-4)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="-3" action="#{entry.setX(-3)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="-2" action="#{entry.setX(-2)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="-1" action="#{entry.setX(-1)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="0" action="#{entry.setX(0)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="1" action="#{entry.setX(1)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="2" action="#{entry.setX(2)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="3" action="#{entry.setX(3)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                        <h:commandLink styleClass="dream-button" value="4" action="#{entry.setX(4)}">
+                            <f:ajax render="coordX" onevent="updateForm"/>
+                        </h:commandLink>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="row">
+                        <h2>Координата Y</h2>
+                        <h:message id="coordYMessage" for="coordY" styleClass="error"/>
+                    </div>
+                    <h:inputText value="#{entry.y}" binding="#{coordY}" id="coordY" required="true"
+                                 requiredMessage="Не указано!"
+                                 validatorMessage="Не входит в (-3, 3)!"
+                                 converterMessage="Не число!"
+                                 onkeydown="if (event.which === 13) { event.preventDefault() }">
+                        <f:validateDoubleRange minimum="-2.99999976158" maximum="2.99999976158"/>
+                        <f:ajax render="coordYMessage submitButton" onevent="updateForm"/>
+                    </h:inputText>
+                </div>
+
+                <div class="radio-buttons">
+                    <h:commandButton styleClass="dream-button submit-button" value="Очистить"
+                                     action="#{resultList.clear()}">
+                        <f:ajax render="tableContainer" onevent="updateForm"/>
+                    </h:commandButton>
+                    <h:commandButton styleClass="dream-button submit-button" value="Отправить"
+                                     action="#{resultList.addEntry(entry)}"
+                                     disabled="#{!coordY.valid}" id="submitButton">
+                        <f:ajax render="tableContainer" onevent="updateForm"/>
+                    </h:commandButton>
+                </div>
+            </h:form>
+
+            <div id="map-container">
+                <h:graphicImage styleClass="map" library="images" name="map1.0.svg" alt="Карта" style="display: none"/>
+                <h:graphicImage styleClass="map" library="images" name="map1.5.svg" alt="Карта" style="display: none"/>
+                <h:graphicImage styleClass="map" library="images" name="map2.0.svg" alt="Карта" style="display: none"/>
+                <h:graphicImage styleClass="map" library="images" name="map2.5.svg" alt="Карта" style="display: none"/>
+                <h:graphicImage styleClass="map" library="images" name="map3.0.svg" alt="Карта"/>
+                <div id="points"></div>
+                <div id="point" class="point"></div>
+                <div id="cursor"></div>
+            </div>
+        </div>
+
+        <h:panelGroup layout="block" id="tableContainer">
+            <h:dataTable value="#{resultList.entries}" var="v" styleClass="card"
+                         rendered="#{resultList.entries.size() > 0}">
+                <h:column>
+                    <f:facet name="header">Время</f:facet>
+                    <h:outputText value="#{v.creationDate}">
+                        <f:convertDateTime type="localDate" pattern="dd/MM/yyyy HH:mm:ss"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Затр.</f:facet>
+                    ${v.formattedProcessingTime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    ${v.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    ${v.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    ${v.radius}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Результат</f:facet>
+                    ${v.hit ? "Попадание" : "Промах"}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </div>
+
+    <div class="footer"></div>
+</h:body>
+</html>

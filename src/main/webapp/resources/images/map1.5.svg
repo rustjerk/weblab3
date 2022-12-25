@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106.1mm" height="106.1mm" version="1.1" viewBox="0 0 106.1 106.1" xmlns="http://www.w3.org/2000/svg">
+ <path d="m53.06 31.97a21.09 21.09 0 0 0-21.09 21.09l21.09 42.19v-42.19h42.19v-21.09z" fill="#ef2d61" opacity=".3854" stroke="#900b2e" stroke-width=".5"/>
+ <g stroke-width="0">
+  <rect x="52.59" y=".8272" width=".9552" height="105.3"/>
+  <rect transform="rotate(90)" x="52.59" y="-105.3" width=".9552" height="105.3"/>
+  <path d="m102.7 55.07v-4.009l3.471 2.004-1.736 1.002z"/>
+  <path d="m55.07 3.471h-4.009l2.004-3.471 1.002 1.736z"/>
+  <rect x="95.01" y="51.06" width=".4862" height="4.009"/>
+  <rect x="95.01" y="51.06" width=".4862" height="4.009"/>
+  <rect x="73.91" y="51.06" width=".4862" height="4.009"/>
+  <rect x="52.82" y="51.06" width=".4862" height="4.009"/>
+  <rect x="31.73" y="51.06" width=".4862" height="4.009"/>
+  <rect x="10.63" y="51.06" width=".4862" height="4.009"/>
+  <rect transform="rotate(-90)" x="-11.12" y="51.06" width=".4862" height="4.009"/>
+  <rect transform="rotate(-90)" x="-32.21" y="51.06" width=".4862" height="4.009"/>
+  <rect transform="rotate(-90)" x="-74.4" y="51.06" width=".4862" height="4.009"/>
+  <rect transform="rotate(-90)" x="-95.49" y="51.06" width=".4862" height="4.009"/>
+  <rect x="73.91" y="51.06" width=".4862" height="4.009"/>
+ </g>
+ <g font-family="'Open Sans'" font-size="4.285px" stroke-width=".1071" text-anchor="middle">
+  <text x="74.061531" y="49.546566" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="74.061531" y="49.546566" stroke-width=".1071">0.75</tspan></text>
+  <text x="95.250008" y="49.546566" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="95.250008" y="49.546566" stroke-width=".1071">1.5</tspan></text>
+  <text x="103.87559" y="49.546566" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="103.87559" y="49.546566" stroke-width=".1071">X</tspan></text>
+  <text x="31.720657" y="49.568539" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="31.720657" y="49.568539" stroke-width=".1071">-0.75</tspan></text>
+  <text x="10.826031" y="49.546566" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="10.826031" y="49.546566" stroke-width=".1071">-1.5</tspan></text>
+  <text x="59.530216" y="96.779465" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="59.530216" y="96.779465" stroke-width=".1071">-1.5</tspan></text>
+  <text x="60.755337" y="75.708282" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="60.755337" y="75.708282" stroke-width=".1071">-0.75</tspan></text>
+  <text x="56.490952" y="33.250233" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="56.490952" y="33.250233" stroke-width=".1071" text-align="start" text-anchor="start">0.75</tspan></text>
+  <text x="56.490952" y="12.185758" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="56.490952" y="12.185758" stroke-width=".1071" text-align="start" text-anchor="start">-1.5</tspan></text>
+  <text x="56.490952" y="3.4714785" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="56.490952" y="3.4714785" stroke-width=".1071" text-align="start" text-anchor="start">Y</tspan></text>
+ </g>
+</svg>

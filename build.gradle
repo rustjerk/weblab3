@@ -1,0 +1,24 @@
+plugins {
+    id "java"
+    id "war"
+}
+
+group "ru.sigsegv.weblab"
+version "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = "17"
+targetCompatibility = "17"
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+dependencies {
+    implementation "jakarta.platform:jakarta.jakartaee-web-api:9.1.0"
+    implementation "org.postgresql:postgresql:42.5.0"
+    implementation "org.hibernate:hibernate-core:6.1.4.Final"
+}
